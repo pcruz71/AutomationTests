@@ -11,7 +11,7 @@
 		<groups>
 			<run>
 				<include name="Navigation" />
-				<include name="Forms" />
+				<include name="Form" />
 			</run>
 		</groups>
 		<classes>
