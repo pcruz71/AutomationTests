@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<suite name="AutomationTests" verbose="1">
+
+	<listeners>
+		<listener class-name="testng.RetryListener" />
+		<listener class-name="testng.TestListener" />
+	</listeners>
+	<parameter name="browser" value="firefox" />
+
+	<test name="parallel tests" parallel="methods" thread-count="10">
+		<groups>
+			<run>
+				<include name="Navigation" />
+				<include name="Forms" />
+			</run>
+		</groups>
+		<classes>
+			<class name="tests.ExerciseTests" />
+			<methods>
+				<include name=".*" />
+			</methods>
+		</classes>
+	</test>
+</suite>
