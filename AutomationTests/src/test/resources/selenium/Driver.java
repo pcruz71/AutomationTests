@@ -16,6 +16,7 @@ public class Driver {
 
 		if (browser.equalsIgnoreCase("firefox")) {
 			
+			System.setProperty("webdriver.gecko.driver", "src/test/resources/selenium/geckodriver");
 			threadDvr.set(new FirefoxDriver());
 
 		} else if (browser.equalsIgnoreCase("chrome")) {
