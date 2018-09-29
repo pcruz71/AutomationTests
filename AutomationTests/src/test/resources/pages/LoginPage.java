@@ -19,4 +19,10 @@ public class LoginPage extends BasePage {
 	public void isPageLoaded() {
 		waitForElementPresent(username);
 	}
+	
+	public void login(String username, String password) {
+		this.sendKeys(this.username, username);
+		this.sendKeys(this.password, password);
+		this.click(submit);
+	}
 }

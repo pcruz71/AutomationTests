@@ -133,9 +133,4 @@ public class SeleniumUtils extends Log4J {
 		this.waitForElementVisibility(locator);
 		return driver.findElement(locator).isEnabled();	
 	}
-
-	public int getElementsCount(By element) {
-		this.waitForElementVisibility(element);
-		return driver.findElements(element).size();
-	}
 }

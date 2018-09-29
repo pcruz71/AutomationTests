@@ -74,18 +74,14 @@ public class ExerciseTests extends BaseTest {
 	@Test(groups = { "Form" }, enabled = true)
 	public void verifyWhenLoginBtnClickedLoginInfoRendered() {
 		LoginPage lp = new LoginPage();
-		lp.sendKeys(lp.username, "username");
-		lp.sendKeys(lp.password, "password");
-		lp.click(lp.submit);
+		lp.login("username", "password");
 		Assert.assertTrue(lp.getTxt(lp.pre).replace("\n", " ").equals("Username: username Password: password"));
 	}
 
 	@Test(groups = { "Form" }, enabled = true)
 	public void verifyPreElementRemovedWhenLoginInfoModified() {
 		LoginPage lp = new LoginPage();
-		lp.sendKeys(lp.username, "username");
-		lp.sendKeys(lp.password, "password");
-		lp.click(lp.submit);
+		lp.login("username", "password");
 		lp.sendKeys(lp.username, "username1");
 		Assert.assertTrue(lp.waitForElementInvisibility(lp.pre));
 		lp.sendKeys(lp.username, "username");
