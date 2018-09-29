@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import org.apache.log4j.Logger;
-import org.apache.maven.surefire.shade.org.apache.maven.shared.utils.io.FileUtils;
+import org.codehaus.plexus.util.FileUtils;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;

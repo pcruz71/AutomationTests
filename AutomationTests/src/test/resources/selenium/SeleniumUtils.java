@@ -15,7 +15,7 @@ import utils.Log4J;
 public class SeleniumUtils extends Log4J {
 
 	WebDriver driver = Driver.getDriver();
-	private static final int MAX_WAIT = 20;
+	private static final int MAX_WAIT = 60;
 
 	@SuppressWarnings("deprecation")
 	public Wait<WebDriver> fluentWait() {
