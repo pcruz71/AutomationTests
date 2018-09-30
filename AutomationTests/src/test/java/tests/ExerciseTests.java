@@ -11,56 +11,91 @@ import pages.ResetPasswordPage;
 public class ExerciseTests extends BaseTest {
 	
 	@Test(groups = { "Navigation" }, enabled = true)
-	public void verifyHomeLink() {
+	public void verifyHomeLinks() {
 		LoginPage lp = new LoginPage();
 		lp.click(lp.home);
 
 		HomePage hp = new HomePage();		
 		Assert.assertTrue(hp.getTxt(hp.h2).equals("Home"));
-		Assert.assertTrue(hp.waitForElementVisibility(hp.home));
-		Assert.assertTrue(hp.waitForElementVisibility(hp.login));
-		Assert.assertTrue(hp.waitForElementVisibility(hp.register));
-		Assert.assertTrue(hp.waitForElementVisibility(hp.forgotPassword));
+		
+		hp.click(hp.home);
+		Assert.assertTrue(hp.getTxt(hp.h2).equals("Home"));
+		
+		hp.click(hp.login);
+		Assert.assertTrue(lp.waitForElementVisibility(lp.username));
+		lp.navigateBack();
+		
+		hp.click(hp.register);
+		RegisterPage rp = new RegisterPage();
+		Assert.assertTrue(rp.getTxt(rp.h2).equals("Register"));
+		lp.navigateBack();
+		
+		hp.click(hp.forgotPassword);
+		ResetPasswordPage pp = new ResetPasswordPage();
+		Assert.assertTrue(pp.getTxt(pp.h2).equals("Reset Password"));		
 	}
 	
 	@Test(groups = { "Navigation" }, enabled = true)
-	public void verifyLoginLink() {
+	public void verifyLoginPageLinks() {
 		LoginPage lp = new LoginPage();
 		Assert.assertTrue(lp.getTxt(lp.h2).equals("Login"));
 		Assert.assertTrue(lp.waitForElementVisibility(lp.username));
 		Assert.assertTrue(lp.waitForElementVisibility(lp.password));
 		Assert.assertTrue(lp.waitForElementVisibility(lp.submit));
 		Assert.assertFalse(lp.isEnabled(lp.submit));
-		Assert.assertTrue(lp.waitForElementVisibility(lp.reset));
-		Assert.assertTrue(lp.waitForElementVisibility(lp.register));
-		Assert.assertTrue(lp.waitForElementVisibility(lp.home));
 		Assert.assertTrue(lp.waitForTextPresent("Until the user provides a non-empty User Name and Password, the Login button is disabled."));
 		Assert.assertTrue(lp.waitForTextPresent("When the Login button is clicked, a <pre> element containing the submitted User Name and Password is rendered."));
-		Assert.assertTrue(lp.waitForTextPresent("Whenever the user modifies the User Name or the Password, the <pre> element is removed from the page."));		
+		Assert.assertTrue(lp.waitForTextPresent("Whenever the user modifies the User Name or the Password, the <pre> element is removed from the page."));
+		
+		lp.click(lp.reset);
+		ResetPasswordPage rp = new ResetPasswordPage();
+		Assert.assertTrue(rp.getTxt(rp.h2).equals("Reset Password"));
+		lp.navigateBack();
+
+		lp.click(lp.register);
+		RegisterPage rg = new RegisterPage();
+		Assert.assertTrue(rg.getTxt(rg.h2).equals("Register"));
+		lp.navigateBack();
+		
+		lp.click(lp.home);
+		HomePage hp = new HomePage();
+		Assert.assertTrue(hp.getTxt(hp.h2).equals("Home"));
 	}
 	
 	@Test(groups = { "Navigation" }, enabled = true)
-	public void verifyRegisterLink() {
+	public void verifyRegisterPageLinks() {
 		LoginPage lp = new LoginPage();
 		lp.click(lp.register);
 
 		RegisterPage rp = new RegisterPage();
 		Assert.assertTrue(rp.getTxt(rp.h2).equals("Register"));
 		Assert.assertTrue(rp.waitForTextPresent("Already have an account?"));
-		Assert.assertTrue(rp.waitForElementVisibility(rp.login));
-		Assert.assertTrue(rp.waitForElementVisibility(rp.home));
+		
+		rp.click(rp.login);
+		Assert.assertTrue(lp.getTxt(lp.h2).equals("Login"));
+		lp.navigateBack();
+		
+		rp.click(rp.home);
+		HomePage hp = new HomePage();
+		Assert.assertTrue(hp.getTxt(hp.h2).equals("Home"));
 	}
 	
 	@Test(groups = { "Navigation" }, enabled = true)
-	public void verifyForgotPasswordLink() {
+	public void verifyResetPageLinks() {
 		LoginPage lp = new LoginPage();
 		lp.click(lp.reset);
 
 		ResetPasswordPage rp = new ResetPasswordPage();
 		Assert.assertTrue(rp.getTxt(rp.h2).equals("Reset Password"));
 		Assert.assertTrue(rp.waitForTextPresent("Remembered your password?"));
-		Assert.assertTrue(rp.waitForElementVisibility(rp.home));
-		Assert.assertTrue(rp.waitForElementVisibility(rp.login));
+		
+		rp.click(rp.login);
+		Assert.assertTrue(lp.getTxt(lp.h2).equals("Login"));
+		lp.navigateBack();
+		
+		rp.click(rp.home);
+		HomePage hp = new HomePage();
+		Assert.assertTrue(hp.getTxt(hp.h2).equals("Home"));
 	}
 	
 	@Test(groups = { "Form" }, enabled = true)

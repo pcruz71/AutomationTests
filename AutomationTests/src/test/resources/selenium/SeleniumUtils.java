@@ -133,4 +133,8 @@ public class SeleniumUtils extends Log4J {
 		this.waitForElementVisibility(locator);
 		return driver.findElement(locator).isEnabled();	
 	}
+	
+	public void navigateBack() {
+		driver.navigate().back();	
+	}
 }
