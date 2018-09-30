@@ -17,6 +17,8 @@ Failed tests will have  a screenshot taken and stored in AutomationTests/test-ou
 From the cmd line, cd into the AutomationTests dir and enter the following command to run the tests:
 
 	mvn clean install test
+			
+![Alt text](https://github.com/pcruz71/AutomationTests/blob/master/AutomationTests/readme/maven.png?raw=true)	
 
 When the tests are complete, refresh the AutomationTests dir to view the results in AutomationTests/target/surefire-reports/AutomationTests/parallel tests.html
 
